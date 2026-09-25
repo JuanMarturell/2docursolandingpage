@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Curso: Landing Pages con Inteligencia Artificial | 2da edición | Juan Marturell</title>
+<meta name="description" content="Curso presencial para Realtors: crea landing pages profesionales para tus propiedades con inteligencia artificial. Miércoles 30 de septiembre, 3:00 a 7:00 pm, Orlando.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1A33;        /* azul tinta, derivado del azul de marca */
+  --ink-2:#112646;
+  --paper:#F3F5F8;      /* claro frío */
+  --white:#FFFFFF;
+  --brand:#004AAD;      /* azul de marca */
+  --brand-soft:#5C92E6; /* azul de marca aclarado para fondos oscuros */
+  --silver:#919191;     /* complementario de marca */
+  --line-dark:rgba(255,255,255,.14);
+  --line-light:#D9DEE6;
+  --text:#1B2536;
+  --text-muted:#5B6576;
+  --serif:"Playfair Display", Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --wrap:1120px;
+  --header-h:88px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + env(safe-area-inset-top,0px))}
+body{margin:0;font-family:var(--sans);color:var(--text);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(100% - 2.5rem, var(--wrap));margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0}
+p{margin:0}
+:focus-visible{outline:3px solid var(--brand-soft);outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:50px;padding:.8rem 1.6rem;border-radius:999px;font-family:var(--sans);font-weight:600;font-size:1rem;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:background .2s,color .2s,border-color .2s}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:#003C8F}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:#E4ECF8}
+.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff;background:transparent}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-outline{border-color:var(--brand);color:var(--brand);background:transparent}
+.btn-outline:hover{background:var(--brand);color:#fff}
+.wa-icon{width:20px;height:20px;flex-shrink:0}
+
+/* Header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line-light);box-shadow:0 4px 20px rgba(10,26,51,.08);padding-top:env(safe-area-inset-top,0px)}
+.site-header .wrap{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{display:flex;align-items:center;flex-shrink:0}
+.logo img{height:72px;width:auto}
+.nav{display:flex;align-items:center;gap:1.6rem}
+.nav a{color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500}
+.nav a:hover{color:var(--brand)}
+.nav .btn{min-height:42px;padding:.55rem 1.2rem;font-size:.92rem;color:#fff;white-space:nowrap}
+@media (max-width:420px){.logo img{height:60px}.nav .btn{padding:.5rem 1rem}}
+@media (max-width:820px){.nav a:not(.btn){display:none}}
+
+/* Sección video (inicio) */
+.intro{background:radial-gradient(120% 80% at 50% 0%, #16335F 0%, var(--ink) 60%);color:#fff;padding:calc(var(--header-h) + env(safe-area-inset-top,0px) + 3.5rem) 0 0}
+.intro-head{text-align:center;max-width:820px;margin-inline:auto}
+.edition{display:inline-block;font-size:.9rem;color:#C9D6EA;border:1px solid var(--line-dark);border-radius:999px;padding:.35rem 1rem;margin-bottom:1.4rem}
+.intro h1{font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:-.01em}
+.intro-sub{margin-top:1.1rem;font-size:clamp(1.02rem,1.6vw,1.18rem);color:#C9D6EA;max-width:640px;margin-inline:auto}
+.video-frame{margin:2.6rem auto 0;max-width:960px;position:relative;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);border:1px solid var(--line-dark);background:#000;aspect-ratio:16/9}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-poster{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0;cursor:pointer;background:#000;display:block}
+.video-poster img{width:100%;height:100%;object-fit:cover;opacity:.88;transition:opacity .25s}
+.video-poster:hover img{opacity:1}
+.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s}
+.video-poster:hover .play{transform:translate(-50%,-50%) scale(1.06)}
+.play svg{width:34px;height:34px;margin-left:5px;fill:var(--brand)}
+.play-label{position:absolute;left:0;right:0;bottom:1.2rem;text-align:center;color:#fff;font-size:.95rem;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+@media (max-width:480px){.play{width:68px;height:68px}.play svg{width:26px;height:26px}}
+
+/* Boleto: detalles del evento */
+.ticket{position:relative;max-width:960px;margin:2.4rem auto -60px;z-index:2;background:#fff;color:var(--text);border-radius:18px;box-shadow:0 20px 50px rgba(10,26,51,.25);display:grid;grid-template-columns:repeat(3,1fr) auto}
+.ticket-item{padding:1.4rem 1.6rem;border-right:1px dashed var(--line-light)}
+.ticket-item small{display:block;color:var(--text-muted);font-size:.85rem;margin-bottom:.2rem}
+.ticket-item b{font-family:var(--serif);font-size:1.22rem;font-weight:600;color:var(--ink);display:block;line-height:1.25}
+.ticket-cta{display:flex;align-items:center;padding:1.2rem 1.6rem}
+.intro-bottom{height:1px}
+@media (max-width:860px){
+  .ticket{grid-template-columns:1fr 1fr}
+  section{padding:4rem 0}
+  .ticket-item:nth-child(2){border-right:0}
+  .ticket-item:nth-child(3){border-top:1px dashed var(--line-light);border-right:0;grid-column:1 / -1}
+  .ticket-cta{grid-column:1 / -1;border-top:1px dashed var(--line-light);justify-content:center}
+}
+@media (max-width:480px){.ticket{grid-template-columns:1fr}.ticket-item{border-right:0!important;border-top:1px dashed var(--line-light)}.ticket-item:first-child{border-top:0}}
+.ticket-cta .btn{width:100%;white-space:nowrap}
+
+/* Secciones generales */
+section{padding:5.5rem 0}
+.after-ticket{padding-top:calc(5.5rem + 60px)}
+@media (max-width:860px){.ticket{margin-bottom:0}.intro{padding-bottom:3rem}.after-ticket{padding-top:4rem}}
+.sec-title{font-size:clamp(1.8rem,3.4vw,2.5rem);color:var(--ink);max-width:720px}
+.sec-lead{margin-top:1rem;color:var(--text-muted);max-width:640px;font-size:1.06rem}
+
+/* Por qué */
+.why-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start}
+.why-list{list-style:none;margin:0;padding:0;display:grid;gap:1.6rem}
+.why-list li{padding-left:1.4rem;border-left:2px solid var(--brand)}
+.why-list h3{font-size:1.2rem;color:var(--ink);margin-bottom:.35rem}
+.why-list p{color:var(--text-muted)}
+@media (max-width:860px){.why-grid{grid-template-columns:1fr;gap:2.5rem}}
+
+/* Qué aprenderás (oscuro) */
+.learn{background:var(--ink);color:#fff}
+.learn .sec-title{color:#fff}
+.learn .sec-lead{color:#B8C4D6}
+.steps{margin-top:3rem;list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line-dark)}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:1rem;padding:1.8rem 1.5rem 1.8rem 0;border-bottom:1px solid var(--line-dark)}
+.steps li:nth-child(odd){padding-right:2.5rem;border-right:1px solid var(--line-dark)}
+.steps li:nth-child(even){padding-left:2.5rem}
+.steps .n{font-family:var(--serif);font-size:1.9rem;color:var(--brand-soft);line-height:1}
+.steps h3{font-size:1.2rem;margin-bottom:.35rem}
+.steps p{color:#B8C4D6;font-size:.98rem}
+@media (max-width:760px){.steps{grid-template-columns:1fr}.steps li:nth-child(odd){border-right:0;padding-right:0}.steps li:nth-child(even){padding-left:0}}
+
+/* Para quién + qué traer */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.panel{background:#fff;border:1px solid var(--line-light);border-radius:16px;padding:2.2rem}
+.panel h3{font-size:1.45rem;color:var(--ink);margin-bottom:1.2rem}
+.check{list-style:none;margin:0;padding:0;display:grid;gap:.85rem}
+.check li{display:grid;grid-template-columns:22px 1fr;gap:.7rem;color:var(--text)}
+.check svg{width:20px;height:20px;margin-top:.2rem;color:var(--brand)}
+.note{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line-light);color:var(--text-muted);font-size:.95rem}
+@media (max-width:860px){.two-col{grid-template-columns:1fr;gap:1.5rem}}
+
+/* Inversión */
+.invest{background:#fff;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light)}
+.price-row{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:1.5rem;align-items:stretch}
+.price{border:1px solid var(--line-light);border-radius:16px;padding:1.8rem;background:var(--paper)}
+.price small{color:var(--text-muted);font-size:.95rem}
+.price .amount{font-family:var(--serif);font-size:3rem;color:var(--ink);line-height:1.1;margin-top:.4rem}
+.price.featured{background:var(--ink);border-color:var(--ink)}
+.price.featured small{color:#B8C4D6}.price.featured .amount{color:#fff}
+.pay{border-radius:16px;padding:1.8rem;border:1px dashed var(--brand);display:flex;flex-direction:column;justify-content:center;gap:.5rem}
+.pay b{color:var(--ink)}
+.pay a{color:var(--brand);font-weight:600;word-break:break-all}
+.seats{margin-top:1.6rem;color:var(--text-muted)}
+@media (max-width:860px){.price-row{grid-template-columns:1fr 1fr}.pay{grid-column:1 / -1}}
+@media (max-width:480px){.price-row{grid-template-columns:1fr}}
+
+/* Instructor */
+.instructor{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;max-width:900px}
+.monogram{width:170px;height:170px;border-radius:50%;background:#fff;display:grid;place-items:center;padding:26px;box-shadow:0 0 0 1px var(--line-light),0 12px 30px rgba(10,26,51,.08)}
+.monogram img{width:100%;height:100%;object-fit:contain}
+.instructor h2{font-size:clamp(1.6rem,3vw,2.1rem);color:var(--ink)}
+.instructor .role{color:var(--brand);font-weight:600;margin:.3rem 0 1rem}
+.instructor p{color:var(--text-muted)}
+.instructor .btn{margin-top:1.5rem}
+@media (max-width:640px){.instructor{grid-template-columns:1fr;text-align:center;justify-items:center}}
+
+/* Formulario */
+.register{background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 100%);color:#fff}
+.register-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+.register .sec-title{color:#fff}
+.register .sec-lead{color:#B8C4D6}
+.recap{margin-top:2rem;display:grid;gap:.9rem;color:#D5DDEA}
+.recap div{display:grid;grid-template-columns:110px 1fr;gap:1rem;padding-bottom:.9rem;border-bottom:1px solid var(--line-dark)}
+.recap span{color:#8FA3C0}
+.recap div{overflow-wrap:anywhere}
+@media (max-width:480px){.recap div{grid-template-columns:80px 1fr;gap:.7rem}}
+.form-card{background:#fff;color:var(--text);border-radius:20px;padding:2.4rem;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.form-card h3{font-size:1.6rem;color:var(--ink)}
+.form-card .hint{color:var(--text-muted);font-size:.95rem;margin:.4rem 0 1.6rem}
+.field{margin-bottom:1.1rem}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.4rem;color:var(--ink)}
+.field label em{color:var(--brand);font-style:normal}
+.field input{width:100%;min-height:50px;padding:.75rem 1rem;border:1.5px solid var(--line-light);border-radius:10px;font:inherit;font-size:16px;color:var(--text);background:var(--paper);transition:border-color .2s,background .2s}
+.field input:focus{outline:none;border-color:var(--brand);background:#fff;box-shadow:0 0 0 4px rgba(0,74,173,.12)}
+.field input[aria-invalid="true"]{border-color:#B42318;background:#FFF6F5}
+.err{display:none;color:#B42318;font-size:.85rem;margin-top:.35rem}
+.field.has-error .err{display:block}
+.form-card .btn{width:100%;margin-top:.6rem;min-height:54px;font-size:1.05rem}
+.form-ok{display:none;text-align:center;padding:1rem 0}
+.form-ok .ok-icon{width:64px;height:64px;border-radius:50%;background:#E6EEF9;display:grid;place-items:center;margin:0 auto 1.2rem}
+.form-ok .ok-icon svg{width:32px;height:32px;color:var(--brand)}
+.form-ok h3{margin-bottom:.8rem}
+.form-ok p{color:var(--text-muted);margin-bottom:.8rem}
+.form-ok .pay-box{background:var(--paper);border-radius:12px;padding:1rem;margin-top:1.2rem;color:var(--text)}
+.form-card.sent form,.form-card.sent > h3,.form-card.sent > .hint{display:none}
+.form-card.sent .form-ok{display:block}
+.form-foot{margin-top:1.1rem;font-size:.86rem;color:var(--text-muted);text-align:center}
+@media (max-width:900px){.register-grid{grid-template-columns:1fr;gap:2.5rem}}
+@media (max-width:480px){.field-row{grid-template-columns:1fr;gap:0}.form-card{padding:1.6rem}}
+
+/* Footer */
+footer{background:#fff;color:var(--text-muted);padding:3.5rem 0 calc(2rem + env(safe-area-inset-bottom,0px));font-size:.95rem;border-top:4px solid var(--brand)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem}
+.foot-logos{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap}
+.foot-logos .l-juan{height:96px;width:auto}
+.foot-logos .l-broker{height:58px;width:auto}
+.foot-logos .sep{width:1px;height:60px;background:var(--line-light)}
+.lic{margin-top:1rem}
+footer h4{color:var(--ink);font-family:var(--serif);font-size:1.15rem;font-weight:600;margin:0 0 .9rem}
+footer a{color:var(--text);text-decoration:none}
+footer a:hover{color:var(--brand);text-decoration:underline}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.socials a{width:44px;height:44px;border-radius:50%;background:var(--brand);display:grid;place-items:center}
+.socials a:hover{background:#003C8F}
+.socials svg{width:20px;height:20px;fill:#fff}
+.legal{margin-top:2.8rem;padding-top:1.5rem;border-top:1px solid var(--line-light);font-size:.84rem;color:var(--text-muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+@media (max-width:760px){.foot-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="#inicio" class="logo" aria-label="Juan Marturell Realtor, ir al inicio">
+      <img src="images/logos/logo-juan-marturell.png" alt="Juan Marturell Realtor" width="1012" height="1046">
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#programa">Programa</a>
+      <a href="#detalles">Inversión</a>
+      <a href="#instructor">Instructor</a>
+      <a href="#inscripcion" class="btn btn-primary">Reservar mi cupo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- Video -->
+  <section class="intro" aria-labelledby="titulo-principal">
+    <div class="wrap">
+      <div class="intro-head">
+        <span class="edition">Segunda edición · Curso presencial en Orlando</span>
+        <h1 id="titulo-principal">Crea landing pages profesionales para tus propiedades con inteligencia artificial</h1>
+        <p class="intro-sub">Una tarde de práctica, con tu propia laptop y tu propia marca, para que salgas con un procedimiento claro que puedes repetir en cada listado.</p>
+      </div>
+      <div class="video-frame">
+        <button type="button" class="video-poster" id="videoPoster" aria-label="Reproducir el video de presentación del curso">
+          <img src="https://i.ytimg.com/vi/aqMIpmmnvJM/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/aqMIpmmnvJM/hqdefault.jpg'">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="play-label">Ver video de presentación</span>
+        </button>
+      </div>
+      <div class="ticket" role="group" aria-label="Datos del curso">
+        <div class="ticket-item"><small>Fecha</small><b>Miércoles 30 de septiembre</b></div>
+        <div class="ticket-item"><small>Horario</small><b>3:00 pm a 7:00 pm</b></div>
+        <div class="ticket-item"><small>Lugar</small><b>9501 Satellite Blvd #108, Orlando</b></div>
+        <div class="ticket-cta"><a href="#inscripcion" class="btn btn-primary">Reservar mi cupo</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué -->
+  <section class="after-ticket" aria-labelledby="t-porque">
+    <div class="wrap why-grid">
+      <div>
+        <h2 class="sec-title" id="t-porque">Tus propiedades merecen algo más que un enlace del MLS</h2>
+        <p class="sec-lead">Una landing page reúne en un solo lugar las fotos, la información y tu contacto. Tu cliente la abre desde el celular, entiende la propiedad en segundos y te escribe directamente a ti.</p>
+      </div>
+      <ul class="why-list">
+        <li><h3>Sin saber programar</h3><p>La inteligencia artificial escribe el código. Tú aportas la información de la propiedad, las fotos y tu identidad de marca.</p></li>
+        <li><h3>Tu marca al frente</h3><p>Tu logo, tus colores, tus redes y tu WhatsApp. La página te presenta a ti como el punto de contacto.</p></li>
+        <li><h3>Un proceso que puedes repetir</h3><p>Sirve para modelos de nueva construcción y para propiedades de reventa. Lo aprendes una vez y lo aplicas en cada listado.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Programa -->
+  <section class="learn" id="programa" aria-labelledby="t-programa">
+    <div class="wrap">
+      <h2 class="sec-title" id="t-programa">Lo que vamos a trabajar paso a paso</h2>
+      <p class="sec-lead">Clase práctica: cada participante trabaja desde su laptop, con sus propios datos y su propia marca.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3>Preparar la información</h3><p>Qué datos, fotos y recursos de marca necesitas, y cómo organizarlos para que la inteligencia artificial trabaje bien.</p></div></li>
+        <li><span class="n">2</span><div><h3>Configurar tu agente</h3><p>Cómo usar el agente de landing pages para que genere la página con tus colores, tu logo y tus datos de contacto.</p></div></li>
+        <li><span class="n">3</span><div><h3>Generar tu landing page</h3><p>Creas una página en HTML con galería de fotos, secciones de la propiedad y botones de WhatsApp.</p></div></li>
+        <li><span class="n">4</span><div><h3>Revisar y ajustar</h3><p>Cómo pedir correcciones, verificar que se vea bien en el celular y dejar la página lista para compartir.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Para quién / qué traer -->
+  <section aria-label="Para quién es y qué debes traer">
+    <div class="wrap two-col">
+      <div class="panel">
+        <h3>Para quién es este curso</h3>
+        <ul class="check">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Realtors que quieren presentar sus listados de forma más profesional.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Agentes que trabajan con nueva construcción o con propiedades de reventa.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Colegas que quieren empezar a usar inteligencia artificial en su trabajo diario, aunque nunca lo hayan hecho.</span></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Qué debes traer</h3>
+        <ul class="check">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Laptop cargada, con su cargador.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Cuenta de ChatGPT Plus activa, verificada desde tu laptop.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Tu logo en PNG (ideal con fondo transparente) y el código HEX de tu color de marca.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Los enlaces de tus redes sociales y tus datos de contacto profesional.</span></li>
+        </ul>
+        <p class="note">No necesitas llegar con una landing page creada. La construimos juntos durante la clase.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inversión -->
+  <section class="invest" id="detalles" aria-labelledby="t-inversion">
+    <div class="wrap">
+      <h2 class="sec-title" id="t-inversion">Inversión</h2>
+      <p class="sec-lead">Cuatro horas de práctica guiada en la sede de Agent Trust Realty, en Orlando.</p>
+      <div class="price-row">
+        <div class="price featured"><small>Agentes de Agent Trust Realty</small><div class="amount">$75</div></div>
+        <div class="price"><small>Agentes de otras compañías</small><div class="amount">$100</div></div>
+        <div class="pay">
+          <b>Forma de pago: Zelle</b>
+          <span>A nombre de Agent Trust Realty:</span>
+          <a href="mailto:agenttrustrealty@gmail.com">agenttrustrealty@gmail.com</a>
+        </div>
+      </div>
+      <p class="seats">Cupo limitado a 20 participantes, para poder dar atención personalizada a cada uno durante la práctica.</p>
+    </div>
+  </section>
+
+  <!-- Instructor -->
+  <section id="instructor" aria-labelledby="t-instructor">
+    <div class="wrap instructor">
+      <div class="monogram"><img src="images/logos/logo-juan-marturell.png" alt="Logo de Juan Marturell Realtor" width="1012" height="1046" loading="lazy"></div>
+      <div>
+        <h2 id="t-instructor">Juan Marturell</h2>
+        <p class="role">Realtor en Florida · Agent Trust Realty</p>
+        <p>Realtor especializado en nueva construcción e inversión, con enfoque en compradores latinos e inversionistas internacionales. Utiliza la inteligencia artificial a diario para crear las landing pages de sus propios listados, y en este curso comparte el mismo proceso que aplica en su trabajo.</p>
+        <a class="btn btn-outline" href="https://wa.me/14077316247?text=Hola%20Juan%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Landing%20Pages%20del%20mi%C3%A9rcoles%2030%20de%20septiembre." target="_blank" rel="noopener">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.9 1.9 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.2 1.3 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.6-8.4z"/></svg>
+          Más información
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de inscripción -->
+  <section class="register" id="inscripcion" aria-labelledby="t-inscripcion">
+    <div class="wrap register-grid">
+      <div>
+        <h2 class="sec-title" id="t-inscripcion">Reserva tu cupo</h2>
+        <p class="sec-lead">Completa tus datos y te contactaremos para confirmar tu inscripción.</p>
+        <div class="recap">
+          <div><span>Fecha</span>Miércoles 30 de septiembre</div>
+          <div><span>Horario</span>3:00 pm a 7:00 pm</div>
+          <div><span>Lugar</span>9501 Satellite Blvd #108, Orlando, FL 32837</div>
+          <div><span>Inversión</span>$75 agentes ATR · $100 otros agentes</div>
+          <div><span>Pago</span>Zelle: agenttrustrealty@gmail.com</div>
+        </div>
+        <a class="btn btn-ghost" style="margin-top:2rem" href="https://wa.me/14077316247?text=Hola%20Juan%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Landing%20Pages%20del%20mi%C3%A9rcoles%2030%20de%20septiembre." target="_blank" rel="noopener">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.9 1.9 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.2 1.3 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.6-8.4z"/></svg>
+          Más información
+        </a>
+      </div>
+
+      <div class="form-card">
+        <h3>Formulario de inscripción</h3>
+        <p class="hint">Todos los campos son obligatorios.</p>
+        <!-- Los atributos name deben mantenerse iguales para que Zoho Forms reciba los datos -->
+        <iframe name="zf_target" id="zfTarget" title="Envío del formulario" hidden></iframe>
+        <form id="zohoForm" target="zf_target" action="https://forms.zohopublic.com/juanmarturell/form/InscripcinCursodeLandingPagesInmobiliarias/formperma/Oe5i5ZBiLysqCxl28tQj5OMKQLTz09Y31t_bqUkSTe8/htmlRecords/submit" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" novalidate>
+          <input type="hidden" name="zf_referrer_name" value="Landing 2do curso">
+          <input type="hidden" name="zf_redirect_url" value="">
+          <input type="hidden" name="zc_gad" value="">
+          <div class="field-row">
+            <div class="field">
+              <label for="Name_First">Nombre <em>*</em></label>
+              <input type="text" id="Name_First" name="Name_First" maxlength="255" autocomplete="given-name" required>
+              <p class="err" id="err-first">Escribe tu nombre.</p>
+            </div>
+            <div class="field">
+              <label for="Name_Last">Apellido <em>*</em></label>
+              <input type="text" id="Name_Last" name="Name_Last" maxlength="255" autocomplete="family-name" required>
+              <p class="err" id="err-last">Escribe tu apellido.</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="Email">Correo electrónico <em>*</em></label>
+            <input type="email" id="Email" name="Email" maxlength="255" autocomplete="email" inputmode="email" required>
+            <p class="err" id="err-email">Escribe un correo válido, por ejemplo nombre@correo.com.</p>
+          </div>
+          <div class="field">
+            <label for="PhoneNumber_countrycode">Teléfono <em>*</em></label>
+            <input type="tel" id="PhoneNumber_countrycode" name="PhoneNumber_countrycode" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="407 000 0000" required>
+            <p class="err" id="err-phone">Escribe un número de teléfono de 10 dígitos.</p>
+          </div>
+          <button type="submit" class="btn btn-primary">Reservar mi cupo</button>
+          <p class="form-foot">Tus datos se usan solo para gestionar tu inscripción a este curso.</p>
+        </form>
+        <div class="form-ok" role="status" aria-live="polite" tabindex="-1" id="formOk">
+          <div class="ok-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <h3>Recibimos tu inscripción<span id="okName"></span></h3>
+          <p>Te contactaremos para confirmar tu cupo en el curso del miércoles 30 de septiembre, de 3:00 pm a 7:00 pm.</p>
+          <div class="pay-box"><b>Pago por Zelle:</b><br>agenttrustrealty@gmail.com<br><small>$75 agentes ATR · $100 otros agentes</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logos">
+          <img class="l-juan" src="images/logos/logo-juan-marturell.png" alt="Juan Marturell Realtor" width="1012" height="1046" loading="lazy">
+          <span class="sep" aria-hidden="true"></span>
+          <img class="l-broker" src="images/logos/logo-agent-trust-realty.png" alt="Agent Trust Realty" width="299" height="97" loading="lazy">
+        </div>
+        <p class="lic">Juan Marturell, Realtor · Agent Trust Realty<br>Licencia de Florida SL3466778</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/realtorjuanmarturell" target="_blank" rel="noopener" aria-label="Instagram de Juan Marturell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.4 5.6 20 7.6 20h8.8c2 0 3.6-1.6 3.6-3.6V7.6C20 5.6 18.4 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg></a>
+          <a href="https://www.facebook.com/RealtorJuanMarturell" target="_blank" rel="noopener" aria-label="Facebook de Juan Marturell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22h3.4z"/></svg></a>
+          <a href="https://www.tiktok.com/@realtorjuanmarturell" target="_blank" rel="noopener" aria-label="TikTok de Juan Marturell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.3v13.4c0 1.6-1.3 2.9-2.9 2.9s-2.9-1.3-2.9-2.9 1.3-2.9 2.9-2.9c.3 0 .6 0 .9.1V9.2c-.3 0-.6-.1-.9-.1-3.5 0-6.3 2.8-6.3 6.3S6.9 21.7 10.4 21.7s6.3-2.8 6.3-6.3V8.6c1.3.9 2.8 1.5 4.5 1.5V6.8c-2.5 0-4.6-2.1-4.6-4.8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/14077316247" target="_blank" rel="noopener">WhatsApp: 407-731-6247</a></li>
+          <li><a href="mailto:juan@marturellrealtor.com">juan@marturellrealtor.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sede del curso</h4>
+        <p>Agent Trust Realty<br>9501 Satellite Blvd #108<br>Orlando, FL 32837</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Juan Marturell, Realtor. Todos los derechos reservados.</span>
+      <span>Curso de formación profesional. No constituye asesoría legal ni financiera.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('zohoForm');
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function setErr(input,bad){
+    var f=input.closest('.field');
+    f.classList.toggle('has-error',bad);
+    input.setAttribute('aria-invalid',bad?'true':'false');
+    var e=f.querySelector('.err'); if(e){input.setAttribute('aria-describedby',e.id);}
+  }
+  function check(input){
+    var v=input.value.trim(), bad=false;
+    if(input.name==='Email') bad=!emailRe.test(v);
+    else if(input.name==='PhoneNumber_countrycode'){var d=v.replace(/\D/g,''); if(d.length===11&&d.charAt(0)==='1') d=d.slice(1); bad=d.length!==10;}
+    else bad=v.length<1;
+    setErr(input,bad); return !bad;
+  }
+  var inputs=form.querySelectorAll('input:not([type=hidden])');
+  inputs.forEach(function(i){i.addEventListener('blur',function(){if(i.value)check(i);});i.addEventListener('input',function(){if(i.closest('.field').classList.contains('has-error'))check(i);});});
+  form.addEventListener('submit',function(ev){
+    var ok=true,first=null;
+    inputs.forEach(function(i){if(!check(i)){ok=false;if(!first)first=i;}});
+    if(!ok){ev.preventDefault();first.focus();return;}
+    var ph=form.PhoneNumber_countrycode, d=ph.value.replace(/\D/g,'');
+    if(d.length===11&&d.charAt(0)==='1') d=d.slice(1);
+    ph.value=d;
+    document.charset='UTF-8';
+    var btn=form.querySelector('button[type=submit]');
+    btn.textContent='Enviando…'; btn.disabled=true;
+    sending=true;
+    document.getElementById('okName').textContent=', '+form.Name_First.value.trim();
+    /* el botón se desactiva después de que el navegador toma el envío */
+  });
+  var sending=false;
+  document.getElementById('zfTarget').addEventListener('load',function(){
+    if(!sending) return;
+    sending=false;
+    var card=document.querySelector('.form-card');
+    card.classList.add('sent');
+    var ok=document.getElementById('formOk'); ok.focus({preventScroll:true});
+    card.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  /* Video: se carga al pulsar la portada */
+  var poster=document.getElementById('videoPoster');
+  poster.addEventListener('click',function(){
+    if(location.protocol==='file:'){
+      window.open('https://youtu.be/aqMIpmmnvJM','_blank','noopener');
+      return;
+    }
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube.com/embed/aqMIpmmnvJM?autoplay=1&rel=0&playsinline=1';
+    f.title='Video de presentación del curso de Landing Pages con Inteligencia Artificial';
+    f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy='strict-origin-when-cross-origin';
+    f.allowFullscreen=true;
+    poster.replaceWith(f);
+  });
+})();
+</script>
+</body>
+</html>
